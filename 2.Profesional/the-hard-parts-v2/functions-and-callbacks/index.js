@@ -28,3 +28,13 @@ function copyArrayAndManipulate(array, instructions) {
 
 function multiplyBy2(input) { return input * 2; }
 const result = copyArrayAndManipulate([1, 2, 3], multiplyBy2);
+
+/*** Arrow function ***/
+
+//TODO : don't run code below causes SyntaxError
+
+//version 1 -> pass definition function in argument
+const multiplyBy2 = input => input * 2
+const result = copyArrayAndManipulate([1, 2, 3], multiplyBy2);
+//version 2 -> pass arrow function in argument directly
+const result = copyArrayAndManipulate([1, 2, 3], input => input * 2);
