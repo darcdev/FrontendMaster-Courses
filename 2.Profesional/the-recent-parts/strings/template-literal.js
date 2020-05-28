@@ -11,3 +11,7 @@ var msg =
 // new form
 
 var msg = `welcome to this class , your name is ${name} and your email is ${email}`;
+
+// post-process with tag in literal templates
+
+// var tagOption = tag`content`
