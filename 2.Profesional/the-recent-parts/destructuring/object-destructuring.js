@@ -31,6 +31,20 @@ tmp = {a: first, b: second} = data(); // assign to a variable the whole object a
 //default assignment
 
 // tmp = {a: a, b: b} = data()
-var {a, b} = data();
+var {a, b} = data() || {};
 //or
-var {a = 42, b} = data();
+var {a = 42, b} = data() || {};
+
+//nested destructuring
+
+function data() {
+  return {
+    a: 3,
+    b: {
+      c: 5,
+      d: 6,
+    },
+  };
+}
+
+var {a, b: {c, d} = {}} = data() || {};
