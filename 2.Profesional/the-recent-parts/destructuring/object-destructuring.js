@@ -25,4 +25,12 @@ function data() {
 var tmp;
 var first, second;
 
-tmp = {a: first, b: second} = data();
+// ({a: first, b: second} = data()); --> distinguish to block
+tmp = {a: first, b: second} = data(); // assign to a variable the whole object and destructuring too
+
+//default assignment
+
+// tmp = {a: a, b: b} = data()
+var {a, b} = data();
+//or
+var {a = 42, b} = data();
