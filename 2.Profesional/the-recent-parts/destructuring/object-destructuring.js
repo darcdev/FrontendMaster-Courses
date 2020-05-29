@@ -48,3 +48,9 @@ function data() {
 }
 
 var {a, b: {c, d} = {}} = data() || {};
+
+// parameter objects
+
+// function parameterObject (temp = {}){}
+function parameterObject({a, b} = {}) {}
+parameterObject({a: 5, b: 10});
