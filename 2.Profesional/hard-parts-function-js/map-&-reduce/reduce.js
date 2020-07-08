@@ -12,7 +12,7 @@ const reduce = function (array, instruction, initialValue) {
 };
 
 const result = reduce(
-  [1, 2, 3],
+  [1, 2, 3, 4, 5, 6, 7, 8],
   function (value, total) {
     return total + value;
   },
