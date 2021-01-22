@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import moment from 'moment';
+import moment from "moment";
+import { signOutWithGoogle } from "../firebase";
 
 const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
   return (
@@ -10,21 +11,21 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
         <div className="CurrentUser--information">
           <h2>{displayName}</h2>
           <p className="email">{email}</p>
-          <p className="created-at">{moment(createdAt).calendar()}</p>
+          <p className="created-at">{moment(createdAt.toDate()).calendar()}</p>
         </div>
       </div>
       <div>
         <div>{children}</div>
-        <button>Sign Out</button>
+        <button onClick={signOutWithGoogle}>Sign Out</button>
       </div>
     </section>
   );
 };
 
 CurrentUser.defaultProps = {
-  displayName: 'Bill Murray',
-  email: 'billmurray@mailinator.com',
-  photoURL: 'https://www.fillmurray.com/300/300',
+  displayName: "Bill Murray",
+  email: "billmurray@mailinator.com",
+  photoURL: "https://www.fillmurray.com/300/300",
   createdAt: new Date(),
 };
 
