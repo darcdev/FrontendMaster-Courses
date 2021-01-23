@@ -19,7 +19,7 @@ class SignUp extends Component {
         email,
         password
       );
-      const userAuth = await createUserProfileDocument(user, { displayName });
+      createUserProfileDocument(user, { displayName });
     } catch (error) {
       console.log(error);
     }

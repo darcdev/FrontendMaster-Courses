@@ -1,45 +1,21 @@
 import React, { Component } from "react";
-
-import { firestore, auth, createUserProfileDocument } from "../firebase";
-import { collectIdsAndDocs } from "../utilities";
 import Posts from "./Posts";
+import UserProfile from "./UserProfile";
+
 import Authentication from "./Authentication";
+import { Switch, Route, Link } from "react-router-dom";
 class Application extends Component {
-  state = {
-    posts: [],
-    user: null,
-  };
-
-  unsubscribeFromFirestore = null;
-  unsubscribeFromAuth = null;
-  componentDidMount = async () => {
-    this.unsubscribeFromFirestore = firestore
-      .collection("posts")
-      .onSnapshot((snapshot) => {
-        const posts = snapshot.docs.map(collectIdsAndDocs);
-        this.setState({ posts });
-      });
-
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      console.log("volvi");
-      const user = await createUserProfileDocument(userAuth);
-      console.log(user);
-      this.setState({ user });
-    });
-  };
-  componentWillUnmount = () => {
-    this.unsubscribeFromFirestore();
-    this.unsubscribeFromAuth();
-  };
-
   render() {
-    const { posts, user } = this.state;
-
     return (
       <main className="Application">
-        <h1>Think Piece</h1>
-        <Authentication user={user} />
-        <Posts posts={posts} />
+        <Link to="/">
+          <h1>Think Piece</h1>
+        </Link>
+        <Authentication />
+        <Switch>
+          <Route exact path="/" component={Posts} />
+          <Route exact path="/profile" component={UserProfile} />
+        </Switch>
       </main>
     );
   }
